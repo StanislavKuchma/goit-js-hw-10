@@ -86,5 +86,9 @@ function onFetchRequest(country) {
 }
   
 function onFetchError() {
+
+            refs.countryEl.innerHTML = "";
+          refs.countryInfoEl.innerHTML = "";
+
     Notiflix.Notify.failure('Oops, there is no country with that name');
 }
