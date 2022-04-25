@@ -21,7 +21,10 @@ refs.country.addEventListener('input', debounce(onInputSearch, DEBOUNCE_DELAY ))
 
 function onInputSearch(evt) {
     const userCountry = evt.target.value.trim();
- 
+  if (userCountry == "") {
+    return;
+  }
+  
   fetchCountries(userCountry)
     .then(onFetchRequest)
     .catch(onFetchError);
@@ -32,9 +35,8 @@ function onFetchRequest(country) {
           refs.countryEl.innerHTML = "";
           refs.countryInfoEl.innerHTML = "";
           
-        if (userCountry === '') {
-        return;
-}   
+
+
 
         if (country.length > 10) {
             Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
